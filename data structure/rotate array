@@ -1,0 +1,30 @@
+
+
+#include <stdio.h>
+
+int main() {
+	int test,i,k;
+	scanf("%d",&test);
+	for(i=0;i<test;i++)
+	{
+	    int n,d;
+	    scanf("%d %d",&n,&d);
+	    int arr[n];
+	    for(int k=0;k<n;k++)
+	    {
+	        scanf("%d",&arr[k]);
+	    }
+	    k=d;
+	    for(int j=0;j<n;j++)
+	    {
+	        if(k>=n)
+	        {
+	            k=k-n;
+	        }
+	        printf("%d ",arr[k]);
+	        k++;
+	    }
+	    printf("\n");
+	}
+	return 0;
+}
