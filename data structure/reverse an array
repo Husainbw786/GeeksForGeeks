@@ -1,0 +1,31 @@
+
+
+#include <stdio.h>
+
+int main() {
+ long long int test,t,i,temp,j;
+ scanf("%d",&test);
+ for(t=0;t<test;t++)
+ {
+    long long int n;
+     scanf("%lld",&n);
+     long long int arr[101];
+     for(i=0;i<n;i++)
+     {
+         scanf("%lld",&arr[i]);
+     }
+     
+         for(i=0,j=n-1;i<j;i++,j--)
+         {
+             temp = arr[i];
+             arr[i] = arr[j];
+             arr[j] = temp;
+         }
+     for(i=0;i<n;i++)
+     {
+         printf("%lld ",arr[i]);
+     }
+   printf("\n");
+ }
+	return 0;
+}
