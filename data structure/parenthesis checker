@@ -1,0 +1,58 @@
+
+#define max 3200
+
+char arr[max] = {'\0'};
+int top;
+
+void push(char value)
+{
+    if(top < (max - 1))
+        arr[++top] = value;
+}
+
+void pop ()
+{
+    if(top > -1 )
+        top--;
+}
+
+char peek()
+{
+    if(top < 0)
+        return '\0';
+        
+    return arr[top];
+}
+
+class Solution
+{
+    public:
+    //Function to check if brackets are balanced or not.
+    bool ispar(string x)
+    {
+        int i=0, flag = 1;
+        top = -1;
+       while(x[i] != '\0')
+       {
+           if(x[i] == '(' || x[i] == '[' || x[i] == '{')
+              push(x[i]);
+           else if(x[i] == ')' && peek() == '(')
+               pop();
+            else if(x[i] == '}' && peek() == '{')
+               pop();
+            else if(x[i] == ']' && peek() == '[')
+               pop();
+           else
+           {
+               flag = 0;
+               break;
+           }
+           i++;
+       }
+       
+        if (peek() != '\0' || flag == 0)
+            return false;
+        else
+            return true;
+    }
+};
