@@ -1,0 +1,14 @@
+
+{
+   // Your code here
+   int i;
+   int indx=0;
+   for(i=1;i<n;i++)
+   {
+       if(arr[indx] < arr[i])
+       {
+           indx=i;
+      }
+    }
+    return indx;
+}
