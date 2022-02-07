@@ -1,0 +1,35 @@
+
+
+#include <iostream>
+using namespace std;
+
+int main() {
+	
+
+	int t,i;
+	cin >> t;
+	for(int j=0;j<t;j++)
+	{
+	  string str;
+	  cin >> str;
+	  int arr[26] = {0};
+	  int len = str.length();
+	  
+	  for(i=0;i<len;i++)
+	  {
+	      arr[str[i]- 'a']++;
+	  }
+	  for(i=0;i<26;i++)
+	  {
+	      for(int k=0;k<arr[i];k++)
+	      {
+	          cout << (char)(i+ 'a');
+	      }
+	  }
+	 	  cout << endl; 
+	
+	}
+	
+	
+	return 0;
+}
