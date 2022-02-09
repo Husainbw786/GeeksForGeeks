@@ -1,0 +1,29 @@
+
+
+int remAnagram(string str1, string str2)
+{
+// Your code goes here
+
+int s1[26] = {0};
+int s2[26] = {0};
+int i;
+    int count = 0;
+    int len = str1.length();
+    int len2 = str2.length();
+
+  for(i=0;i<len;i++)
+  {
+      s1[str1[i] - 'a'] += 1;
+  }
+  
+   for(i=0;i<len2;i++)
+  {
+      s2[str2[i] - 'a'] += 1;
+  }
+
+  for(i=0;i<26;i++)
+  {
+      count += abs(s1[i]-s2[i]);
+  }
+  return count;
+}
