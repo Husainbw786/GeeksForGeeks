@@ -1,0 +1,35 @@
+
+
+
+class Solution
+{
+    public:
+    //Function to calculate sum of all numbers present in a string.
+    int findSum(string str)
+    {
+    	
+    	// Your code here
+    	
+    	int i;
+    	int num;
+    	int n=0;
+    	for(i=str.length() -1; i >=0 ; i--)
+    	{
+    	    if(str[i] >='0' && str[i] <= '9')
+    	    {
+    	        num = str[i] - '0';
+    	        i--;
+    	        int mul = 10;
+    	        while(str[i] >='0' && str[i] <= '9')
+    	        {
+    	            num = num + (str[i]-'0')*mul;
+    	            mul = mul*10;
+    	            i--;
+    	        }
+    	        n = num + n;
+    	    }
+    	}
+    	
+    	return n;
+    }
+};
