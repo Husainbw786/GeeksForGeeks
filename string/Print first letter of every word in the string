@@ -1,0 +1,21 @@
+
+
+class Solution{
+public:	
+	
+	string firstAlphabet(string s)
+	{
+	    // Your code goes here
+	    string st = "";
+	    st = st + s[0];
+	    int i;
+	    for(i=0;i<s.length();i++)
+	    {
+	        if(s[i] == ' ')
+	        {
+	            st = st + s[i+1];
+	        }
+	    }
+	    return st;
+	}
+};
