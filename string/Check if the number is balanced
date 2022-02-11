@@ -1,0 +1,29 @@
+
+
+class Solution{
+public:	
+	bool balancedNumber(string s)
+	{
+	    // code here
+	   int n = s.length(); 
+	   int sum_str1 = 0;
+	   int sum_str2 = 0;
+	   int i;
+	   for(i=0;i< (n/2);i++)
+	   {
+	       sum_str1 = sum_str1 + s[i];
+	   }
+	   for(i= (n/2)+1; i<n; i++ )
+	   {
+	       sum_str2 =  sum_str2 + s[i];
+	   }
+	   if(sum_str1 == sum_str2)
+	   {
+	       return 1;
+	   }
+	   else
+	   {
+	       return 0;
+	   }
+	}
+};
