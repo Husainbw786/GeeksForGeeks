@@ -1,0 +1,56 @@
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+ // } Driver Code Ends
+
+
+class Solution
+{
+    public:
+    //Function to reverse words in a given string.
+    string reverseWords(string s) 
+    { 
+        // code here
+        string st = "";
+        
+            reverse(s.begin() , s.end());
+        int i = 0;
+        int j = 0;
+        
+          st += s;
+       for(j=0;j<st.length();j++)
+        {
+            if(st[j] == '.')
+            {
+                reverse(st.begin()+i,st.begin()+j);
+                i = j+1;
+                
+            }
+        }
+        reverse(st.begin()+i,st.end());
+        return st;
+        
+        
+        
+        
+    } 
+};
+    
+    
+   
+
+// { Driver Code Starts.
+int main() 
+{
+    int t;
+    cin >> t;
+    while (t--) 
+    {
+        string s;
+        cin >> s;
+        Solution obj;
+        cout<<obj.reverseWords(s)<<endl;
+    }
+}  // } Driver Code Ends
