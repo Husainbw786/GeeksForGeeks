@@ -1,0 +1,68 @@
+
+class Solution{   
+public:
+    //Function to partition the array around the range such 
+    //that array is divided into three parts.
+    void threeWayPartition(vector<int>& arr,int a, int b)
+    {
+        // code here 
+        vector<int>v;
+        int i;
+        int n = arr.size();
+        for(i=0;i<n;i++)
+        {
+            if(arr[i] < a)
+            {
+                v.push_back(arr[i]);
+            }
+        }
+        
+        for(i=0;i<n;i++)
+        {
+            if(arr[i] >= a && arr[i] <= b)
+            {
+                v.push_back(arr[i]);
+            }
+        }
+        for(i=0;i<n;i++)
+        {
+            if(arr[i] > b)
+            {
+                v.push_back(arr[i]);
+            }
+        }
+        arr = v;
+    }
+};
+****************************************************************2nd solution*******************************************************************
+
+class Solution{   
+public:
+    //Function to partition the array around the range such 
+    //that array is divided into three parts.
+    void threeWayPartition(vector<int>& array,int a, int b)
+    {
+        // code here 
+        sort(array.begin(),array.end());
+        int i;
+        vector<int>v;
+        for(i=0;i<array.size();i++)
+        {
+            if(array[i]<a)
+            {
+                 v.push_back(array[i]);
+            }
+            else if(array[i] >= a && array[i] <= b)
+            {
+                v.push_back(array[i]);
+            }
+            else
+            {
+                v.push_back(array[i]);
+            }
+        }
+    }
+};
+
+
+
