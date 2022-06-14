@@ -13,23 +13,24 @@ class Solution{
         //Your Code Here
         sort(a,a+n);
         int i;
-        for(i=0;i<n-2;i++)
+        for(i=0;i<n;i++)
         {
-            int left = i+1;
-            int right = n-1;
-            while(left<right)
+            int y = x - a[i];
+            int low = i+1;
+            int high = n-1;
+            while(low < high)
             {
-                if(a[i]+a[left]+a[right] == x)
+                if(a[low] + a[high] == y)
                 {
                     return true;
                 }
-                else if(a[i]+a[left]+a[right] > x)
+                else if(a[low] + a[high] > y)
                 {
-                    right--;
+                    high--;
                 }
                 else
                 {
-                    left++;
+                    low++;
                 }
             }
         }
