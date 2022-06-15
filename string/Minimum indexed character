@@ -1,0 +1,23 @@
+class Solution
+{
+  public:
+    //Function to find the minimum indexed character.
+    int minIndexChar(string str, string patt)
+    {
+        // Your code here
+        unordered_set<char>s;
+        int i;
+        for(i=0;i<patt.length();i++)
+        {
+            s.insert(patt[i]);
+        }
+        for(i=0;i<str.length();i++)
+        {
+            if(s.find(str[i]) != s.end())
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+};
