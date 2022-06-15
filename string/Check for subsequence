@@ -1,0 +1,22 @@
+class Solution{
+    public:
+    bool isSubSequence(string a, string b) 
+    {
+        // code here
+        int j = 0;
+        int i;
+        
+        for(i=0;i<b.length();i++)
+        {
+            if(b[i] == a[j])
+            {
+                j++;
+            }
+        }
+        if(a.length() == j)
+        {
+            return 1;
+        }
+        return 0;
+    }
+};
