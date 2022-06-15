@@ -1,0 +1,21 @@
+class Solution
+{
+    public:
+    //Function to check if a string is Isogram or not.
+    bool isIsogram(string st)
+    {
+        //Your code here
+        int i;
+        set<char>s;
+        for(i=0;i<st.size();i++)
+        {
+            s.insert(st[i]);
+        }
+        if(s.size() == st.size())
+        {
+            return true;
+        }
+        return false;
+        
+    }
+};
