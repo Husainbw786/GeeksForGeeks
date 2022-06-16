@@ -1,0 +1,32 @@
+class Solution{
+  public:
+  
+    vector<int> countEleLessThanOrEqual(int arr1[], int arr2[], int m, int n)  {
+        
+        vector<int>result(m);
+        
+        int maxVal = INT_MIN;
+        for(int i = 0; i < n; i++){
+            maxVal = max(arr2[i],maxVal);
+        }
+        
+        int countArray[maxVal + 1] = {0};
+        for(int i = 0; i < n; i++){
+            countArray[arr2[i]]++;
+        }
+        
+        for(int i = 1; i <= maxVal; i++){
+            countArray[i] += countArray[i-1];
+        }
+        
+        for(int i = 0; i < m; i++){
+            if(arr1[i] < maxVal){
+                result[i] = countArray[arr1[i]];
+            }else{
+                result[i] = countArray[maxVal];
+            }
+        }
+        
+        return result;
+    }
+};
