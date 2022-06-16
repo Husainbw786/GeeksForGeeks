@@ -1,0 +1,24 @@
+class Solution{
+    public:
+	string printMinIndexChar(string s, string patt)
+	{
+	    // Code here
+	    unordered_map<char,int>mp;
+	    int i;
+	    string st = "";
+	    for(i=0;i<patt.length();i++)
+	    {
+	        mp[patt[i]]++;
+	    }
+	    for(i=0;i<s.length();i++)
+	    {
+	        if(mp.find(s[i]) != mp.end())
+	        {
+	            st = st + s[i];
+	            return st;
+	            break;
+	        }
+	    }
+	    return "$";
+	}
+};
