@@ -1,0 +1,44 @@
+class Solution{
+public:	
+	int maxSubstring(string s)
+	{
+	    // Your code goes here
+	    int ans = 0;
+	    int  count ;
+	    int cur_sum = 0;
+	    int i;
+	    for(i=0;i<s.length();i++)
+	    {
+	        count = 0;
+	        if(s.at(i) == '0')
+	        {
+	            count++;
+	        }
+	        else if(s.at(i) == '1')
+	        {
+	            count--;
+	        }
+	        
+	        if(cur_sum > 0)
+	        {
+	            cur_sum += count;
+	        }
+	        else
+	        {
+	            cur_sum = count;
+	        }
+	        if(cur_sum > ans)
+	        {
+	            ans = cur_sum;
+	        }
+	    }
+	    if(ans==0)
+	    {
+	        ans = -1;
+	    }
+	    return ans;
+	        
+	    
+	    
+	}
+};
