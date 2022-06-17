@@ -1,0 +1,22 @@
+class Solution
+{
+  public:
+    //Function to check if a string is Pangram or not.
+    bool checkPangram (string &str) {
+        
+        // your code here
+        char i;
+        int count = 0;
+        for(i = 'a'; i <= 'z';i++)
+        {
+            if(str.find(i) != -1 || str.find(i-32) != -1)
+            {
+                count++;
+            }
+        }
+        if(count == 26)
+        {
+            return true;
+        }
+        return false;
+    }
