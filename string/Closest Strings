@@ -1,0 +1,28 @@
+class Solution{
+public:	
+	
+	int shortestDistance(vector<string> &s, string word1, string word2)
+	{
+		// Your code goes here
+		int count1 = -1;
+		int count2 = -1;
+		int i;
+		int dis = INT_MAX;
+		for(i=0;i<s.size();i++)
+		{
+		    if(s[i] == word1)
+		    {
+		        count1 = i;
+		    }
+		    if(s[i] == word2)
+		    {
+		        count2 = i;
+		    }
+		    if(count1 != -1 && count2 != -1)
+		    {
+		        dis = min(dis,abs(count1-count2));
+		    }
+		}
+		return dis;
+	}
+};Closest Strings
