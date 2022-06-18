@@ -1,0 +1,27 @@
+class Solution
+{
+    public:
+        int closing (string s, int pos)
+        {
+        	//code here.
+        	int open = 0;
+        	int n = s.length();
+        	int i;
+        	for(i=pos;i<n;i++)
+        	{
+        	    if(s[i] == '[')
+        	    {
+        	        open++;
+        	    }
+        	    else if(s[i] == ']')
+        	    {
+        	        open--;
+        	    }
+        	    if(open == 0)
+        	    {
+        	        break;
+        	    }
+        	}
+        	return i;
+        }
+};
