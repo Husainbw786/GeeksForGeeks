@@ -1,0 +1,22 @@
+class Solution {
+  public:
+    int findTime(string s1, string s2) {
+        // code here
+        unordered_map<char,int>mp;
+        int i;
+        for(i=0;i<s1.length();i++)
+        {
+            mp[s1[i]] = i;
+        }
+        int ans = 0,c = 0;
+        for(i=0;i<s2.length();i++)
+        {
+            ans = ans + abs(mp[s2[i]]-c);
+           
+            c = mp[s2[i]];
+           
+            
+        }
+        return ans;
+    }
+};
