@@ -1,0 +1,30 @@
+class Solution
+{
+  public:
+    string arrangeString(string str)
+    {
+        //code here.
+        string v = "";
+        int sum = 0;
+        int i;
+        sort(str.begin(),str.end());
+        for(i=0;i<str.length();i++)
+        {
+            if(str[i] >= 'A' && str[i] <= 'Z')
+            {
+                v.push_back(str[i]);
+            }
+             else if(str[i] >= '0' && str[i] <= '9')
+            {
+                sum += (str[i] - '0');
+                
+            }
+        }
+       if(sum)
+       {
+        return v+to_string(sum);
+       }
+       return v;
+        
+    }
+};
