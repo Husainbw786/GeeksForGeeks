@@ -1,0 +1,16 @@
+class Solution {
+  public:
+    vector<vector<int>> rotateMatrix(int N, int M, int K,
+                                     vector<vector<int>> Mat) {
+        // code here
+        int i;
+        K = K % M;
+        for(i=0;i<N;i++)
+        {
+            reverse(Mat[i].begin(),Mat[i].begin()+K);
+            reverse(Mat[i].begin()+K,Mat[i].begin()+M);
+            reverse(Mat[i].begin(),Mat[i].end());
+        }
+        return Mat;
+    }
+};
