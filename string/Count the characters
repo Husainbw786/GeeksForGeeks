@@ -1,0 +1,29 @@
+class Solution
+{
+  public:
+        int getCount (string s, int N)
+        {
+            //code here.
+            unordered_map<char,int>mp;
+            int i;
+            int count = 0;
+            
+            for(i=0;i<s.length();i++)
+            {
+                if(s[i] != s[i+1])
+                {
+                mp[s[i]]++;
+                }
+            }
+            for(auto x:mp)
+            {
+                if(x.second == N )
+                {
+                    
+                    count++;
+                }
+            }
+            return count;
+            
+        }
+};
