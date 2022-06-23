@@ -1,0 +1,26 @@
+
+class Solution {
+  public:
+    int minRow(int n, int m, vector<vector<int>> A) {
+        // code here
+        int min = INT_MAX;
+        int row = -1;
+        int i,j;
+        for(i=0;i<n;i++)
+        { int Curr = 0;
+            for(j=0;j<m;j++)
+            {
+                if(A[i][j] == 1)
+                {
+                    Curr++;
+                }
+            }
+            if(Curr < min)
+            {
+                min = Curr;
+                row = i;
+            }
+        }
+        return row+1;
+    }
+};
