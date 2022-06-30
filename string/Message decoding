@@ -1,0 +1,32 @@
+
+vector<string> extractIntegerWords(string s)
+{
+    // code here
+    string st = "";
+    int i;
+    vector<string>v;
+    for(i=0;i<s.length();i++)
+    {
+        if(s[i] >= '0' && s[i] <= '9')
+        {
+            st = st + s[i];
+        
+               if(s[i+1] >= '0' && s[i+1] <= '9')
+                {
+                    continue;
+                }
+               else
+                 {
+                     st = st + ' '; 
+                 }
+        }
+    }
+    
+         if(!st.length())
+           {
+                 st = "No Integers";
+           }
+         v.push_back(st);
+          return v;
+   
+}
