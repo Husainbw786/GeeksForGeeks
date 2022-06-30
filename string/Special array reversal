@@ -1,0 +1,28 @@
+class Solution
+{
+    public:
+    string reverse(string str)
+    { 
+        //code here.
+        int l = 0;
+        int r = str.size()-1;
+        while(l<r)
+        {
+            if(isalpha (str[l]) && isalpha (str[r]))
+            {
+                swap(str[l],str[r]);
+                l++;
+                r--;
+            }
+            else if( isalpha(str[l]) == 0 )
+            {
+                l++;
+            }
+            else if( isalpha(str[r]) == 0)
+            {
+                r--;
+            }
+        }
+        return str;
+    } 
+};
