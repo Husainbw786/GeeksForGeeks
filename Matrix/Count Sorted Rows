@@ -1,0 +1,29 @@
+
+class Solution {
+  public:
+    int sortedCount(int N, int M, vector<vector<int>> Mat) {
+        
+        // code here
+        int ans = 0;
+        int i,j;
+        for(i=0;i<N;i++)
+        {
+            int sorted = 0;
+            for(j=0;j<M-1;j++)
+            {
+                if(Mat[i][j] > Mat[i][j+1])
+                {
+                    sorted++;
+                }
+                if(Mat[i][j] < Mat[i][j+1])
+                {
+                    sorted--;
+                }
+            }
+            if(sorted == M-1 || sorted == 1-M)
+            ans++;
+        }
+        return ans;
+        
+    }
+};
