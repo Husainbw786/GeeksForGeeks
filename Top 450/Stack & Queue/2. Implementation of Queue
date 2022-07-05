@@ -1,0 +1,93 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define size 10
+int rear = -1;
+int front = -1;
+int arr[size];
+
+void enqueue();
+void dequeue();
+void peek();
+
+
+int main()
+{
+    
+   int choice;
+    while(1)
+  {
+    printf("1 to enqueue\n");
+    
+    printf("2 to dequeue\n");
+    
+    printf("3 to peek\n");
+    scanf("%d",&choice);
+    switch(choice)
+    {
+        case 1:enqueue();
+               break;
+               
+        case 2:dequeue();
+               break;
+               
+        case 3:peek();
+               break;
+        case 4: exit(0);
+               break;
+        default : printf("wrong choice\n");       
+    }
+  }
+
+}
+
+void enqueue()
+{
+    int x;
+    if(rear == size-1)
+    {
+        printf("queue is full\n");
+    }
+    else
+    {
+        if(front== - 1)
+          front = 0;
+        
+        
+        
+        printf("enter the element to enqueue\n");
+        scanf("%d",&x);
+        rear++;
+        arr[rear]=x;
+    }
+}
+void dequeue()
+{
+    if(front == -1 || front >rear)
+    {
+        printf("queue is empty\n");
+        
+    }
+    else
+    {
+        printf("element deleted from queue is :%d\n",arr[front]);
+        front++;
+    }
+}
+
+void peek()
+{
+  if(front == -1)
+    {
+        printf("queue is empty\n");
+        
+    }  
+    else
+    {
+        printf("top element :%d\n",arr[front]);
+    }
+    
+}
+
+
+
+
