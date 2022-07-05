@@ -1,0 +1,88 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define size 4
+int top = -1;
+
+int arr[size];
+
+void push();
+void peek();
+void pop();
+
+
+int main()
+{
+    
+   int choice;
+    while(1)
+  {
+    printf("1 to push\n");
+    
+    printf("2 to pop\n");
+    
+    printf("3 to peek\n");
+    scanf("%d",&choice);
+    switch(choice)
+    {
+        case 1:push();
+               break;
+               
+        case 2:pop();
+               break;
+               
+        case 3:peek();
+               break;
+        case 4: exit(0);
+               break;
+        default : printf("wrong choice\n");       
+    }
+  }
+
+}
+
+void push()
+{
+    int x;
+    if(top == size-1)
+    {
+        printf("stack is full\n");
+    }
+    else
+    {
+        printf("\nEnter element to be inserted to the stack:");
+        scanf("%d",&x);
+        top++;
+        arr[top]=x;
+    }
+}
+
+void pop()
+{
+    
+    if(top == -1)
+    {
+        printf("stack is empty\n");
+        
+    }
+    else 
+    {
+        printf("\npopped element: %d\n",arr[top]);
+        top--;
+        
+    }
+}
+
+void peek()
+{
+      
+    if(top == -1)
+    {
+        printf("stack is empty\n");
+        
+    }
+    else 
+    {
+        printf("top elementis :%d\n",arr[top]);
+    }
+    
+}
