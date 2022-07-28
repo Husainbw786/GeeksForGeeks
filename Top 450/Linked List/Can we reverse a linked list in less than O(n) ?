@@ -1,0 +1,2 @@
+It is not possible to reverse a simple singly linked list in less than O(n).
+A simple singly linked list can only be reversed in O(n) time using recursive and iterative methods. 
