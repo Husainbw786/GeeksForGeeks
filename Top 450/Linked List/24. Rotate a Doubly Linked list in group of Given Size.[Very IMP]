@@ -1,0 +1,28 @@
+
+https://www.codingninjas.com/codestudio/problems/reverse-dll-nodes-in-groups_920399?leftPanelTab=1
+
+
+
+Node* reverseDLLInGroups(Node* head, int k)
+{	
+    // Write your code here. 
+    Node* Curr = head;
+    Node* next = NULL;
+    Node* prev = NULL;
+    int i = 0;
+    while(Curr!= NULL && i<k)
+    {
+        next = Curr->next;
+        Curr->next = prev;
+        Curr->prev = next;
+        prev = Curr;
+        Curr = next;
+        i++;
+    }
+    if(next != NULL)
+    {
+        head->next = reverseDLLInGroups(next,k);
+    }
+    return prev;
+    
+}
