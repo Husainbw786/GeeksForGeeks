@@ -1,0 +1,14 @@
+class Solution{
+public:
+    long long int factorial(int N){
+        //code here
+        long long int ans  = 1;
+        if(N==0)
+        {
+            return 1;
+        }
+       long long int result =  factorial(N-1);
+       ans  = N * result;
+        return ans;
+    }
+};
