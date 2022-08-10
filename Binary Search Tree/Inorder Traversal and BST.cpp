@@ -1,0 +1,16 @@
+class Solution{
+    public:
+    int isRepresentingBST(int arr[], int N)
+    {
+        // code here
+        int i;
+        for(i=0;i<N-1;i++)
+        {
+            if(arr[i] >= arr[i+1])
+            {
+                return 0;
+            }
+        }
+        return 1;
+    }
+};
