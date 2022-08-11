@@ -1,28 +1,52 @@
 
-void Solve(Node* root, Node* &pre, Node* &suc,int Key)
+  Node* inorder_pre(Node* root)
+   {
+       Node* temp = root->left;
+       while(temp->right)
+       {
+           temp = temp->right;
+       }
+       return temp;
+   }
+   Node* inorder_suc(Node* root)
+   {
+       Node* temp = root->right;
+       while(temp->left)
+       {
+           temp = temp->left;
+       }
+       return temp;
+   }
+
+void findPreSuc(Node* root, Node*& pre, Node*& suc, int key)
 {
+
+    // Your code goes here
     if(root == NULL)
     {
+      return;   
+    }
+    if(root->key == key)
+    {
+        if(root->left)
+        {
+             pre =  inorder_pre(root);
+        }
+        if(root->right)
+        {
+            suc = inorder_suc(root);
+        }
         return;
     }
-    Solve(root->left,pre,suc,Key);
-    if(root->key < Key)
-    {
-        pre = root;
-    }
-    if(root->key > Key && suc->key == -1)
+    if(root->key > key)
     {
         suc = root;
+        findPreSuc(root->left,pre,suc,key);
     }
-    Solve(root->right,pre,suc,Key);
-    return;
-}
+    else if(root->key < key)
+    {
+        pre = root;
+        findPreSuc(root->right,pre,suc,key);
+    }
 
-void findPreSuc(Node* root, Node*& pre, Node*& suc, int Key)
-{
-
-// Your code goes here
- pre = new Node(-1);
- suc = new Node(-1);
- Solve(root,pre,suc,Key);
 }
