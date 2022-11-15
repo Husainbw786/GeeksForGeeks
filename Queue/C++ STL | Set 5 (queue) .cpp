@@ -5,6 +5,9 @@ void push(queue<int> &q,int x)
 }
 
 
+
+
+
 /*pop out the front element 
 from the queue q and returns it */
 int pop(queue<int> &q)
