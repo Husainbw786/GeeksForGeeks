@@ -1,5 +1,5 @@
-class Solution{
-    public:
+ class Solution{
+     public:
     
     void dfs(int source,vector<vector<int>> &graph,vector<int> &vis,string & ans)
     {
