@@ -1,3 +1,4 @@
+ 
 class Solution{
     public:
     // Function to find element in sorted array
