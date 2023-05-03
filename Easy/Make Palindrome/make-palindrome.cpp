@@ -12,22 +12,39 @@ class Solution{
 public:
     bool makePalindrome(int n,vector<string> &arr){
         // Code here
-        int i,j ;
         unordered_map<string,int>mp;
+        int i;
         for(i=0;i<n;i++)
         {
-            mp[arr[i]]++;
-        }
-        for(auto x : mp)
-        {
-            string temp = x.first;
-            reverse(temp.begin(),temp.end());
-            if(x.second != mp[temp])
+            string x = arr[i];
+            reverse(x.begin(),x.end());
+            if(mp.find(x) != mp.end())
             {
-                return false;
+                mp.erase(x);
+            }
+            else
+            {
+                mp[arr[i]] = 1;
             }
         }
-        return true;
+        
+        if(mp.size() == 0)
+        {
+            return true;
+        }
+        if(mp.size() == 1)
+        {
+            for(auto x : mp)
+            {
+                string a = x.first;
+                reverse(a.begin(),a.end());
+                if(a == x.first)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 };
 
