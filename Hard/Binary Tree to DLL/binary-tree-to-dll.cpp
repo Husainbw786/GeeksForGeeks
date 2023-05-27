@@ -2,7 +2,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Tree Node
+// Tree
 struct Node
 {
     int data;
