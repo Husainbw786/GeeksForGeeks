@@ -3,51 +3,49 @@
 using namespace std;
 
 // } Driver Code Ends
+
 class Solution {
 public:
-
-     bool dfs(int x,int y,string s,vector<vector<char>>& board,int idx)
-   {
-       if(x < 0 || x >= board.size() || y < 0 || y >= board[0].size() )
-       {
-           return false;
-       }
-       if(s[idx] != board[x][y])
-       {
-           return false;
-       }
-       if( idx == s.size()-1)
-       {
-           return true;
-       }
-       char temp = board[x][y];
-       board[x][y] = '*' ;
-       bool a = false,b = false, c = false, d = false;
-       a = dfs(x+1,y,s,board,idx+1);
-       b = dfs(x-1,y,s,board,idx+1);
-       c = dfs(x,y+1,s,board,idx+1);
-       d = dfs(x,y-1,s,board,idx+1);
-       board[x][y] = temp;
-       return a || b || c || d;
-   }
-
+    void dfs(int x, int y, string s, vector<vector<char>>& board, int idx, bool& found) {
+        if (x < 0 || x >= board.size() || y < 0 || y >= board[0].size()) {
+            return;
+        }
+        
+        if (s[idx] != board[x][y]) {
+            return;
+        }
+        
+        if (idx == s.size() - 1) {
+            found = true;
+            return;
+        }
+        
+        char temp = board[x][y];
+        board[x][y] = '*';
+        
+        dfs(x + 1, y, s, board, idx + 1, found);
+        dfs(x - 1, y, s, board, idx + 1, found);
+        dfs(x, y + 1, s, board, idx + 1, found);
+        dfs(x, y - 1, s, board, idx + 1, found);
+        
+        board[x][y] = temp;
+    }
 
     bool isWordExist(vector<vector<char>>& board, string word) {
-        // Code here
-        
         int n = board.size();
         int m = board[0].size();
-        int i,j;
-        for(i=0;i<n;i++)
-        {
-            for(j=0;j<m;j++)
-            {
-                if(dfs(i,j,word,board,0))
-                {
+        
+        bool found = false;
+        
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                dfs(i, j, word, board, 0, found);
+                if (found) {
                     return true;
                 }
             }
         }
+        
         return false;
     }
 };
