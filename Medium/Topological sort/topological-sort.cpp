@@ -7,7 +7,7 @@ class Solution
 {
 	public:
 	//Function to return list containing vertices in Topological order. 
-	vector<int> topoSort(int V, vector<int> adj[]) 
+vector<int> topoSort(int V, vector<int> adj[]) 
 	{
 	    // code here
 	    vector<int>indegree(V,0);
