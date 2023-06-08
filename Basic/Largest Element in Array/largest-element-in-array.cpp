@@ -1,10 +1,10 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for C++
 
 #include <bits/stdc++.h>
 using namespace std;
 
- // } Driver Code Ends
+// } Driver Code Ends
 //User function Template for C++
 
 class Solution
@@ -12,21 +12,22 @@ class Solution
 public:
     int largest(vector<int> &arr, int n)
     {
+        
         int i;
-        int max = 0;
+        int ans = INT_MIN;
         for(i=0;i<n;i++)
         {
-            if(max < arr[i])
+            if(ans < arr[i])
             {
-                max = arr[i];
+                ans = arr[i];
             }
         }
-        return max;
+        return ans;
     }
 };
 
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 int main()
 {
     int t;
@@ -45,4 +46,5 @@ int main()
     }
     return 0;
 }
-  // } Driver Code Ends
+
+// } Driver Code Ends
