@@ -13,22 +13,55 @@ class Solution{
     {
         //Your code here
         //return vector with correct order of elements
-        vector<int>ans;
-        map<int,int>mp;
-        int i;
-        for(i=0;i<n;i++)
-        {
-            mp[arr1[i]]++;
+      int i = 0;
+      int j = 0;
+      vector<int>v;
+      while(i < n && j < m)
+      {
+         if (arr1[i] == arr2[j]) 
+         {
+                if (v.empty() || v.back() != arr1[i]) 
+                {
+                    v.push_back(arr1[i]);
+                }
+                i++;
+                j++;
         }
-        for(i=0;i<m;i++)
-        {
-            mp[arr2[i]]++;
+        else if(arr1[i] < arr2[j])
+          {
+              if(v.empty() || v.back() != arr1[i])
+              {
+                  v.push_back(arr1[i]);
+              }
+              i++;
+          }
+          else
+          {
+              if(v.empty() || v.back() != arr2[j])
+              {
+                  v.push_back(arr2[j]);
+              }
+              j++;
+          }
+      }
+      while (i < n) 
+      {
+            if (v.empty() || v.back() != arr1[i]) 
+            {
+                v.push_back(arr1[i]);
+            }
+            i++;
         }
-        for(auto x : mp)
+        
+        while (j < m)
         {
-            ans.push_back(x.first);
+            if (v.empty() || v.back() != arr2[j])
+            {
+                v.push_back(arr2[j]);
+            }
+            j++;
         }
-        return ans;
+      return v;
         
     }
 };
