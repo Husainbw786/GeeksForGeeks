@@ -9,7 +9,7 @@ class Solution{
     // Function to find floor of x
     // n: size of vector
     // x: element whose floor is to find
-    int findFloor(vector<long long> arr, long long n, long long x){
+    int findFloor(vector<long long> v, long long n, long long x){
         
         // Your code here
         int low = 0;
@@ -18,17 +18,14 @@ class Solution{
         while(low <= high)
         {
             int mid = low + (high-low)/2;
-            if(arr[mid] <= x)
+            if(v[mid] <= x)
             {
                 idx = mid;
-            }
-            if(arr[mid] > x)
-            {
-                high = mid - 1;
+                low = mid + 1;
             }
             else
             {
-                low = mid + 1;
+                high = mid-1;
             }
         }
         return idx;
