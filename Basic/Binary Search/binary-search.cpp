@@ -12,23 +12,22 @@ class Solution {
   public:
     int binarysearch(int arr[], int n, int k) {
         // code here
-        int l = 0;
-        int r = n-1;
-        int m = 0;
-        while(l<=r)
+        int low = 0;
+        int high = n-1;
+        while(low <= high)
         {
-            m = (l+r)/2;
-            if(arr[m] == k)
+            int mid = (low+high)/2;
+            if(arr[mid] == k)
             {
-                return m;
+                return mid;
             }
-            if(arr[m]>k)
+            else if(arr[mid] > k)
             {
-                r = m - 1;
+                high = mid-1;
             }
             else
             {
-                l = m + 1;
+                low = mid+1;
             }
         }
         return -1;
