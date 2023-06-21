@@ -10,18 +10,22 @@ public:
 	int rowWithMax1s(vector<vector<int> > arr, int n, int m) {
 	    // code here
 	    int i,j;
-	    for(i=0;i<m;i++)
+	    i = 0;
+	    j = m-1;
+	    int ans = -1;
+	    while(i<n && j>=0)
 	    {
-	        for(j=0;j<n;j++)
+	        if(arr[i][j] == 1)
 	        {
-	            if(arr[j][i] == 1)
-	            {
-	                return j;
-	            }
+	            ans = i;
+	            j--;
+	        }
+	        else
+	        {
+	            i++;
 	        }
 	    }
-	    return -1;
-	    
+	    return ans;
 	}
 
 };
