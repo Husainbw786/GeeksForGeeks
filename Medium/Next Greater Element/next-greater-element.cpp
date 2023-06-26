@@ -1,43 +1,56 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include<bits/stdc++.h>
 using namespace std;
 
 
- // } Driver Code Ends
+// } Driver Code Ends
 class Solution
 {
     public:
     //Function to find the next greater element for each element of the array.
-    vector<long long> nextLargerElement(vector<long long> v, int n){
+    vector<long long> nextLargerElement(vector<long long> arr, int n){
         // Your code here
-        
-        vector<long long >ans(n,-1);
-        stack<int>st;
-        
-        for(int i=0;i<n;i++)
+        stack<long long>st;
+        vector<long long >ans(n,0);
+        int i;
+        for(i=n-1;i>=0;i--)
         {
             if(st.empty())
             {
-                st.push(i);
-                continue;
+                ans[i] = -1;
+                st.push(arr[i]);
             }
-            while(st.size() > 0 && v[i] > v[st.top()])
+            else
             {
-                ans[st.top()] = v[i];
-                st.pop();
+                if(st.top() > arr[i])
+                {
+                    ans[i] = st.top();
+                    st.push(arr[i]);
+                }
+                else
+                {
+                    while(!st.empty() && st.top()  <= arr[i])
+                    {
+                        st.pop();
+                    }
+                    if(st.size() == 0)
+                    {
+                        ans[i] = -1;
+                        st.push(arr[i]);
+                    }
+                    else
+                    {
+                        ans[i] = st.top();
+                        st.push(arr[i]);
+                    }
+                }
             }
-            st.push(i);
-        }
-        while(st.size() > 0)
-        {
-            ans[st.top()] = -1;
-            st.pop();
         }
         return ans;
     }
 };
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 
 int main()
 {
@@ -58,4 +71,5 @@ int main()
         cout<<endl;
     }
 	return 0;
-}  // } Driver Code Ends
+}
+// } Driver Code Ends
