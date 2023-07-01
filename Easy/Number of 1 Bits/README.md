@@ -1,4 +1,4 @@
-<h2><a href="https://practice.geeksforgeeks.org/problems/set-bits0143/1?page=1&curated[]=8&sortBy=submissions">Number of 1 Bits</a></h2><h3>Difficulty Level : Easy</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a positive integer N, print count of set bits in it.&nbsp;</span></p>
+<h2><a href="https://practice.geeksforgeeks.org/problems/set-bits0143/1">Number of 1 Bits</a></h2><h3>Difficulty Level : Easy</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a positive integer N, print count of set bits in it.&nbsp;</span></p>
 
 <p><strong><span style="font-size:18px">Example 1:</span></strong></p>
 
