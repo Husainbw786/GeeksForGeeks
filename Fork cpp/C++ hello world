@@ -3,6 +3,7 @@
 
 class Solution{
     public:
+
     void helloWorld()
     {
     cout<<"Hello World";
@@ -10,3 +11,4 @@ class Solution{
         //cout will output to console
         
     }
+
