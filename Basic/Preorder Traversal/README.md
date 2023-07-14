@@ -1,4 +1,4 @@
-<h2><a href="https://practice.geeksforgeeks.org/problems/preorder-traversal/1?page=1&difficulty[]=-2&difficulty[]=-1&category[]=Tree&sortBy=submissions">Preorder Traversal</a></h2><h3>Difficulty Level : Basic</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a&nbsp;binary tree, find&nbsp;its&nbsp;preorder traversal.</span></p>
+<h2><a href="https://practice.geeksforgeeks.org/problems/preorder-traversal/1?page=1&difficulty[]=-1&category[]=Tree&sortBy=submissions">Preorder Traversal</a></h2><h3>Difficulty Level : Basic</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a&nbsp;binary tree, find&nbsp;its&nbsp;preorder traversal.</span></p>
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
