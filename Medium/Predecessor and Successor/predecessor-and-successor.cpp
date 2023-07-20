@@ -38,35 +38,39 @@ struct Node
 // It sets pre and suc as predecessor and successor respectively
 class Solution
 {
-public:
-    
-  void Solve(Node* root, Node* &pre, Node* &suc,int Key)
+    public:
+    void findPreSuc(Node* root, Node*& pre, Node*& suc, int key)
     {
-        if(root == NULL)
-        {
-            return;
-        }
-        Solve(root->left,pre,suc,Key);
-        if(root->key < Key)
-        {
-            pre = root;
-        }
-        if(root->key > Key && suc->key == -1)
-        {
-            suc = root;
-        }
-        Solve(root->right,pre,suc,Key);
-        return;
-    }
-
-void findPreSuc(Node* root, Node*& pre, Node*& suc, int Key)
-    {
-    
         // Your code goes here
-         pre = new Node(-1);
-         suc = new Node(-1);
-         Solve(root,pre,suc,Key);
-    
+        Node* temp1 = root;
+        Node* temp2 = root;
+        while(temp1)
+        {
+            if(temp1->key > key)
+            {
+                suc = temp1;
+                temp1 = temp1->left;
+            }
+            else
+            {
+                temp1 = temp1->right;
+            }
+        }
+         while(temp2)
+        {
+            if(temp2->key >= key)
+            {
+                
+                temp2 = temp2->left;
+            }
+            else
+            {
+                pre = temp2;
+                temp2 = temp2->right;
+            }
+        }
+            
+        
     }
 };
 
