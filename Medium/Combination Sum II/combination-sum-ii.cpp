@@ -1,81 +1,81 @@
 //{ Driver Code Starts
-// Initial Template for C++
+//Initial Template for C++
+
 #include <bits/stdc++.h>
 using namespace std;
 
-
 // } Driver Code Ends
-// User function Template for C++
+//User function Template for C++
 
-class Solution {
-    void subset(vector<int> &A, int B, int sum, int idx, vector<vector<int>> &ans, vector<int> &temp){
-        if(sum==B){
-            ans.push_back(temp);
-            return;
-        }
-        if(idx>=A.size()){
-            return;
-        }
-        if(sum>B){
-            return;
-        }
-        temp.push_back(A[idx]);
-        subset(A, B, sum+A[idx], idx+1, ans, temp);
-        temp.pop_back();
+class Solution{
+public:
+
+    void solve(int i, int k, vector<int>arr, vector<int>temp, vector<vector<int>>&ans)
+    {
+          if(k == 0)
+            {
+                ans.push_back(temp);
+                return;
+            }
+            if(i == arr.size())
+            {
+                return;
+            }
+            if(arr[i] <= k)
+            {
+              temp.push_back(arr[i]);
+              solve(i+1,k-arr[i],arr,temp,ans);
+              temp.pop_back();  
+            }
+            while(i+1 < arr.size() && arr[i] == arr[i+1])
+            {
+                i++;
+            }
+            solve(i+1,k,arr,temp,ans);
         
-        while(idx<A.size() && A[idx]==A[idx+1]){
-            idx++;
-        }
-        
-        subset(A, B, sum, idx+1, ans, temp);
     }
-  public:
-    vector<vector<int>> combinationSum2(vector<int> &candidates, int target) {
-        sort(candidates.begin(), candidates.end());
-        vector<vector<int>> ans;
-        vector<int> temp;
-        subset(candidates, target, 0, 0, ans, temp);
+
+    vector<vector<int>> CombinationSum2(vector<int> candidates,int n,int target)
+    {
+        //code here
+         sort(candidates.begin(),candidates.end());
+        vector<vector<int>>ans;
+        vector<int>temp;
+        solve(0,target,candidates,temp,ans);
+
+        
         return ans;
     }
 };
 
-
 //{ Driver Code Starts.
-int main() {
 
-    int t = 1;
-    cin >> t;
 
-    // freopen ("output_gfg.txt", "w", stdout);
-
-    while (t--) {
-        int n, k;
-        cin >> n >> k;
-        vector<int> candidates(n);
-        for (int i = 0; i < n; ++i) {
-            cin >> candidates[i];
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,k;
+        cin>>n>>k;
+        vector<int> arr(n);
+        for(int i=0;i<n;i++)
+        {
+            cin>>arr[i];
         }
-        // char marker;
-        // cin >> marker;
-
-        Solution obj;
-
-        vector<vector<int>> comb = obj.combinationSum2(candidates, k);
-        sort(comb.begin(), comb.end());
-        cout << "[ ";
-        for (int i = 0; i < comb.size(); i++) {
-            cout << "[ ";
-            for (int j = 0; j < comb[i].size(); j++) {
-                cout << comb[i][j] << " ";
+        Solution ob;
+        auto obj=ob.CombinationSum2(arr,n,k);
+        for(int i=0;i<obj.size();i++)
+        {
+            for(int j=0;j<obj[i].size();j++)
+            {
+                cout<<obj[i][j]<<" ";
             }
-            cout << "]";
+            cout<<"\n";
         }
-        cout << " ]\n";
-
-        // cout << "\n~\n";
+        if(obj.size()==0) cout<<"\n";
     }
-    fclose(stdout);
     return 0;
 }
-
 // } Driver Code Ends
