@@ -10,42 +10,31 @@ using namespace std;
 
 class Solution{
   public:
+  
+  int solve(int idx,int len,int price[],vector<vector<int>>&dp)
+  {
+      if(idx == 0)
+      {
+          return price[0]*len;
+      }
+      if(dp[idx][len] != -1)
+      {
+          return dp[idx][len];
+      }
+      int not_take = solve(idx-1,len,price,dp);
+      int take = INT_MIN;
+      int rod_len = idx+1;
+      if(rod_len <= len)
+      {
+          take = price[idx] + solve(idx,len-rod_len,price,dp);
+      }
+      return dp[idx][len] = max(take,not_take);
+  }
+  
     int cutRod(int price[], int n) {
         //code here
-        
-         int dp[n+1][n+1];
-        
-         int i,j;
-        int wt[n];
-        for(int i=1;i<n+1;i++)
-        {
-            wt[i-1]=i;
-        }
-         for(i=0;i<n+1;i++)
-         {
-             for(j=0;j<n+1;j++)
-             {
-                 if(i==0 || j == 0)
-                 {
-                     dp[i][j] = 0;
-                 }
-             }
-         }
-         for(i=1;i<=n;i++)
-         {
-             for(j=1;j<=n;j++)
-             {
-                 if(wt[i-1] <= j)
-                 {
-                     dp[i][j] = max(price[i-1] + dp[i][j-wt[i-1]], dp[i-1][j]);
-                 }
-                 else
-                 {
-                     dp[i][j] = dp[i-1][j];
-                 }
-             }
-         }
-         return dp[n][n];
+        vector<vector<int>>dp(n,vector<int>(n+1,-1));
+        return solve(n-1,n,price,dp);
     }
 };
 
