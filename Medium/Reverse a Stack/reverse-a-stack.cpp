@@ -10,21 +10,21 @@ using namespace std;
 
 class Solution{
 public:
-  stack<int>s;
+stack<int>s;
     void Reverse(stack<int> &st){
         
-        if(st.empty())
-        {
-          return;
-        }
-         s.push(st.top());
-         st.pop();
-        Reverse(st);
-        st = s;
+    if(st.empty())
+    {
+        return;
+    }
+    int x = st.top();
+    st.pop();
+    s.push(x);
+    Reverse(st);
+    st = s;
         
     }
 };
-
 
 //{ Driver Code Starts.
 
