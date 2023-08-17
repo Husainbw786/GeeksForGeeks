@@ -5,41 +5,24 @@ using namespace std;
 
 // } Driver Code Ends
 
+
 class Solution
 {
     public:
     //Function to calculate the span of stockâ€™s price for all n days.
-    vector <int> calculateSpan(int price[], int n)
+    vector <int> calculateSpan(int p[], int n)
     {
        // Your code here
-       deque<int>dq;
-       int i;
-       vector<int>ans;
-       int count = 1;
-       for(i=0;i<n;i++)
+       vector<int> ans(n, 1);
+       stack<int> st;
+       for(int i=0; i<n; i++)
        {
-           if(dq.empty())
+           while(!st.empty() && p[i]>=p[st.top()])
            {
-               ans.push_back(1);
-               dq.push_back(i);
-               continue;
+              ans[i]+=ans[st.top()];
+              st.pop();
            }
-           if(!dq.empty() && price[dq.back()] <= price[i])
-           {
-               int temp = 1;
-               while(!dq.empty() && price[dq.back()] <= price[i])
-               {
-                   temp += ans[dq.back()];
-                   dq.pop_back();
-               }
-               ans.push_back(temp);
-               dq.push_back(i);
-           }
-           else if(!dq.empty() && price[dq.back()] > price[i])
-           {
-               ans.push_back(1);
-               dq.push_back(i);
-           }
+           st.push(i);
        }
        return ans;
     }
