@@ -93,6 +93,8 @@ int main() {
 // } Driver Code Ends
 
 
+
+
 // Function to find the minimum element in the given BST.
 
 /*
@@ -120,8 +122,15 @@ Node* newNode(int val) {
          return;
      }
      ans = min(ans,root->data);
-     dfs(root->left,ans);
-     dfs(root->right,ans);
+     if(root->left)
+     {
+       dfs(root->left,ans);
+     }
+     else
+     {
+       dfs(root->right,ans);  
+     }
+     
  }
 
 int minValue(Node* root) {
