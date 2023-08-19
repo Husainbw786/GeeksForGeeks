@@ -35,41 +35,42 @@ struct Node
 };
 */
 
-
 class Solution
 {
     public:
-    Node* deleteNode(Node *head, int x)
+    Node* deleteNode(Node *head_ref, int x)
     {
       //Your code here
-       int count = 1;
-       Node* a = head;
-       if(x == 1)
-       {
-           head = head->next;
-           return head;
-       }
-       while(head->next)
-       {
-           if(x == 1)
-           {
-              head->prev->next = head->next;
-              head->next->prev = head->prev;
-           }
-           head = head->next;
-           x--;
-           
-       }
-       
-       if(x == 1)
-       {
-           head->prev->next = head->next;
-       }
-       return a;
+      if(x == 1)
+      {
+          head_ref = head_ref->next;
+          return head_ref;
+      }
+      Node* prev = NULL;
+      Node* curr = head_ref;
+      int count = 1;
+      
+      while(count != x)
+      {
+          prev = curr;
+          curr = curr->next;
+          count++;
+      }
+      
+      if(curr->next != NULL)
+      {
+         prev->next = curr->next;
+         curr->next->prev = prev; 
+         return head_ref;
+      }
+      
+      prev->next = NULL;
+      return head_ref;
+     
+      
+      
     }
 };
-
-
 
 //{ Driver Code Starts.
 
