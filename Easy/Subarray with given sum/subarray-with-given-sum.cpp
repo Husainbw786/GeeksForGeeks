@@ -11,48 +11,43 @@ class Solution
     vector<int> subarraySum(vector<int>arr, int n, long long s)
     {
         // Your code here
-        long long sum = 0;
-        int i = 0;
-        int j = 0;
-        vector<int>v;
+        long long int sum = 0;
+        int i=0,j=0;
+        vector<int>ans;
         if(s == 0)
         {
             return {-1};
         }
+        
         while(j < n)
         {
             sum += arr[j];
             if(sum == s)
             {
-                v.push_back(i+1);
-                v.push_back(j+1);
-                return v;
+                ans.push_back(i+1);
+                ans.push_back(j+1);
+                return ans;
             }
             else if(sum > s)
             {
-                while(i <= j && sum > s)
+                while(sum > s)
                 {
                     sum -= arr[i];
                     i++;
                 }
                 if(sum == s)
                 {
-                    v.push_back(i+1);
-                    v.push_back(j+1);
-                    return v;
+                    ans.push_back(i+1);
+                    ans.push_back(j+1);
+                    return ans;
                 }
             }
+           
             j++;
         }
-        if(v.size() == 0)
-        {
-            v.push_back(-1);
-        }
-        return v;
-        
+        return {-1};
     }
 };
-
 
 //{ Driver Code Starts.
 
