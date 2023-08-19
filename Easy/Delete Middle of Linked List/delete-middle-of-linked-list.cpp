@@ -53,6 +53,8 @@ int main()
 // } Driver Code Ends
 
 
+
+
 /* Link list Node:
 
 struct Node
@@ -72,27 +74,22 @@ struct Node
 Node* deleteMid(Node* head)
 {
     // Your Code Here
-    
-    Node* slow = head;
-    Node* fast = head;
-    int count = 0;
-    while(slow)
-    {
-        count++;
-        slow = slow->next;
-    } 
-    if(count == 0 || count == 1)
+    if(head == NULL || head->next == NULL)
     {
         return NULL;
     }
-    count = count /2;
-    count = count - 1;
-    while(count > 0)
+    
+    Node* slow = head;
+    Node* fast = head;
+    Node* prev = NULL;
+    
+    while(fast && fast->next)
     {
-       fast = fast->next;
-        count--;
+        prev = slow;
+        slow = slow->next;
+        fast = fast->next->next;
     }
-     fast->next = fast->next->next;;
-     return head;
+    prev->next = slow->next;
+    return head;
     
 }
