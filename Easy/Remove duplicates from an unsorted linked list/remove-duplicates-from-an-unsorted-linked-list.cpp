@@ -44,7 +44,7 @@ class Solution
     Node * removeDuplicates( Node *head) 
     {
      // your code goes here
-     unordered_map<int,int>mp;
+      unordered_map<int,int>mp;
      int i;
      Node* temp = head;
      Node* prev = NULL;
@@ -54,7 +54,7 @@ class Solution
          if(mp.find(temp->data) != mp.end())
          {
              prev->next = temp->next;
-             free(temp);
+            //free(temp);
              temp = prev->next;
          }
          else
@@ -67,6 +67,7 @@ class Solution
      return head;
     }
 };
+
 
 
 //{ Driver Code Starts.
