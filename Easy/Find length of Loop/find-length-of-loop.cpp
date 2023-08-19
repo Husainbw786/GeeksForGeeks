@@ -60,6 +60,8 @@ int main()
 // } Driver Code Ends
 
 
+
+
 /*
 
 struct Node {
@@ -77,36 +79,32 @@ struct Node {
 int countNodesinLoop(struct Node *head)
 {
     // Code here
-     Node* slow = head;
-     Node* fast = head;
+    bool flag = 0;
+    Node* low = head;
+    Node* high = head;
+    while(high != NULL && high->next != NULL)
+    {
+        low = low->next;
+        high = high->next->next;
         
-        while(fast && fast->next)
+        if(low == high)
         {
-            slow = slow->next;
-            fast = fast->next->next;
-            if(slow == fast)
-            {
-                break;
-            }
+            flag = 1;
+            break;
         }
-        if(fast == NULL || fast->next == NULL)
-        {
-            return 0;
-        }
-        slow = head;
-        while(slow != fast)
-        {
-            slow = slow->next;
-            fast = fast->next;
-        }
-        
+    }
+    if(flag == 1)
+    {
         int count = 1;
-        slow = slow->next;
-        while(slow != fast)
+        low = low->next;
+        
+        while(low != high)
         {
-            slow = slow->next;
             count++;
+            low = low->next;
+    
         }
         return count;
-        
+    }
+    return 0;
 }
