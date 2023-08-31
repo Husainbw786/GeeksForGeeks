@@ -11,25 +11,16 @@ class Solution{
   public:
     int longestKSubstr(string s, int k) {
     // your code here
-    int n = s.size();
-    int maxi = 0;
-    int i = 0;
-    int j = 0;
-    unordered_map<int,int>mp;
-    while(j < n)
-    {
-        mp[s[j]]++;
-        if(mp.size() < k)
+     
+        int n = s.size();
+        int i,j;
+        i = 0;
+        j = 0;
+        unordered_map<int,int>mp;
+        int maxi = 0;
+        while(j < n)
         {
-            j++;
-        }
-        else if(mp.size() == k)
-        {
-            maxi = max(j-i+1,maxi);
-            j++;
-        }
-        else if(mp.size() > k)
-        {
+            mp[s[j]]++;
             while(mp.size() > k)
             {
                 mp[s[i]]--;
@@ -39,19 +30,20 @@ class Solution{
                 }
                 i++;
             }
+            if(mp.size() == k)
+            {
+                maxi = max(maxi,j-i+1); 
+            }
             j++;
+            
         }
-    }
-    if(maxi == 0)
-    {
-        return -1;
-    }
-    return maxi;
-    
+        if(maxi == 0)
+        {
+            return -1;
+        }
+        return maxi;
     }
 };
-
-
 
 //{ Driver Code Starts.
 int main() {
