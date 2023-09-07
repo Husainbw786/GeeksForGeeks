@@ -22,6 +22,7 @@ class Solution {
         {
             return 0;
         }
+
         while(!q.empty())
         {
             int node = q.front().first;
@@ -44,6 +45,7 @@ class Solution {
         return -1;
     }
 };
+
 
 
 //{ Driver Code Starts.
