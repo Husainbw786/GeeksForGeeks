@@ -11,18 +11,17 @@ using namespace std;
 class Solution{
 public:
 stack<int>s;
-    void Reverse(stack<int> &st){
+    void Reverse(stack<int> &St){
         
-    if(st.empty())
-    {
-        return;
-    }
-    int x = st.top();
-    st.pop();
-    s.push(x);
-    Reverse(st);
-    st = s;
-        
+        if(St.empty())
+        {
+            return;
+        }
+        int temp = St.top();
+        St.pop();
+        s.push(temp);
+        Reverse(St);
+        St = s;
     }
 };
 
