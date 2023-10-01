@@ -3,30 +3,37 @@
 using namespace std;
 
 // } Driver Code Ends
+
 class Solution{
 	public:
+	    
+	    void solve(int i, string temp, string s, vector<string>&ans)
+	    {
+	        if(i == s.size())
+	        {
+	            ans.push_back(temp);
+	            return;
+	        }
+	          temp += s[i];
+        	  solve(i+1,temp,s, ans);
+        	  temp.pop_back();
+        	  solve(i+1,temp,s,ans);
+	    }
+
+
 		vector<string> AllPossibleStrings(string s){
 		    // Code here
-		    int n = s.size();
-		    int i,j;
-		   
-		    vector<string>v;
-		    for(i=1;i<pow(2,n);i++)
+		    vector<string>ans,v;
+		    solve(0,"",s,ans);
+		    sort(ans.begin(),ans.end());
+		    for(int i=1;i<ans.size();i++)
 		    {
-		        string temp = "";
-		        for(j=0;j<n;j++)
-		        {
-		            if(i & (1 << j))
-		            {
-		                temp += s[j];
-		            }
-		        }
-		        v.push_back(temp);
+		        v.push_back(ans[i]);
 		    }
-		    sort(v.begin(),v.end());
 		    return v;
 		}
 };
+
 
 //{ Driver Code Starts.
 int main(){
