@@ -10,32 +10,25 @@ using namespace std;
 class Solution{
 public:
 
-    void solve(int i, string s, int num)
+    void solve(int i, string temp, int n)
     {
-        if(i == num)
+        if(i == n)
         {
-            cout<< s << " ";
+            cout << temp << " ";
             return;
         }
-        
-        s += '0';
-        solve(i+1,s,num);
-        s.pop_back();
-        
-        if(i == 0 || (i > 0 && s[i-1] != '1'))
+        solve(i+1,temp + "0",n);
+        if(temp.back() != '1')
         {
-            s += '1';
-            solve(i+1,s,num);
-            s.pop_back();
+            solve(i+1,temp+'1',n);
         }
+        
     }
-
 
     void generateBinaryStrings(int num){
         //Write your code
-        string s = "";
-        solve(0,s,num);
         
+        solve(0,"",num);
     }
 };
 
