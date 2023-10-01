@@ -7,21 +7,26 @@ using namespace std;
 
 class Solution{
     public:
-    int findSubArraySum(int nums[], int n, int k)
+    int findSubArraySum(int Arr[], int n, int k)
     {
-        unordered_map<int,int> mp;  
-        int sum=0;
-        int ans=0;
-        mp[sum] = 1;
-        for(int i=0;i<n;i++)
+        // code here
+        unordered_map<int,int>mp;
+        int sum = 0;
+        int i;
+        int ans =0 ;
+        for(i=0;i<n;i++)
         {
-            sum += nums[i];
-            int find = sum - k;
-            if(mp.find(find) != mp.end())
+            sum += Arr[i];
+            if(sum == k)
             {
-                ans += mp[find];
+                ans++;
             }
-            mp[sum]++;
+            if(mp.find(sum-k) != mp.end())
+            {
+                ans += mp[sum-k];
+            }
+            
+              mp[sum]++;
         }
         return ans;
     }
