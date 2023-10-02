@@ -9,32 +9,36 @@ using namespace std;
 
 class Solution{
 public:
-
-    int solve(int idx, int cap,int val[], int wt[],vector<vector<int>>&dp)
+    
+    int solve(int i, int w, int wt[], int val[], vector<vector<int>>&dp)
     {
-        if(idx == 0)
+        if(i == 0)
         {
-            int x = cap/wt[0];
-            return val[0]*x;
+            if(wt[i] <= w)
+            {
+                int x = w/wt[0];
+                return val[0]*x;
+            }
+            return 0;
         }
-        if(dp[idx][cap] != -1)
+        if(dp[i][w] != -1)
         {
-            return dp[idx][cap];
+            return dp[i][w];
         }
-        int not_take = solve(idx-1,cap,val,wt,dp);
-        int take = INT_MIN;
-        if(wt[idx] <= cap)
+        int not_pick = solve(i-1,w,wt,val,dp);
+        int pick = 0;
+        if(w >= wt[i])
         {
-            take = val[idx] + solve(idx,cap-wt[idx],val,wt,dp);
+            pick = val[i] + solve(i,w-wt[i],wt,val,dp);
         }
-        return dp[idx][cap] = max(take,not_take);
+        return dp[i][w] =  max(pick,not_pick);
     }
 
-    int knapSack(int N, int W, int val[], int wt[])
+    int knapSack(int n, int W, int val[], int wt[])
     {
         // code here
-        vector<vector<int>>dp(N,vector<int>(W+1,-1));
-        return solve(N-1,W,val,wt,dp);
+       vector<vector<int>>dp(n,vector<int>(W+1,-1));
+       return solve(n-1,W,wt,val,dp);
     }
 };
 
