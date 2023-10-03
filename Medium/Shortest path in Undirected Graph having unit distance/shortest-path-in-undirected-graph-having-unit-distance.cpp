@@ -34,6 +34,7 @@ class Solution {
                     dis[x] = dist+1;
                     q.push({x,dist+1});
                 }
+              
             }
         }
         vector<int>ans(N,-1);
@@ -47,6 +48,7 @@ class Solution {
         return ans;
     }
 };
+
 
 
 //{ Driver Code Starts.
