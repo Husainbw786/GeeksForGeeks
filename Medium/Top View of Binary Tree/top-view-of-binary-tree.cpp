@@ -105,11 +105,10 @@ class Solution
     vector<int> topView(Node *root)
     {
         //Your code here
-        
-        queue<pair<Node*,int>>q;
-        q.push({root,0});
-        map<int,int>mp;
         vector<int>ans;
+        queue<pair<Node*,int>>q;
+        map<int,int>mp;
+        q.push({root,0});
         while(!q.empty())
         {
             Node* temp = q.front().first;
