@@ -56,15 +56,16 @@ public:
 //Function to push an element into stack using two queues.
 void QueueStack :: push(int x)
 {
-        // Your Codeq1.
+        // Your Code
         q1.push(x);
 }
 
 //Function to pop an element from stack using two queues. 
 int QueueStack :: pop()
 {
-        // Your Code   
-        if(q1.size() == 0)
+        // Your Code
+        q2.empty();
+        if(q1.empty())
         {
             return -1;
         }
@@ -81,8 +82,7 @@ int QueueStack :: pop()
             q2.pop();
         }
         return ans;
-        
-        
 }
 
- 
+
+
