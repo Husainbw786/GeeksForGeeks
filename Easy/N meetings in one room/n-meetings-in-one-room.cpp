@@ -3,6 +3,7 @@
 using namespace std;
 
 // } Driver Code Ends
+
 class Solution
 {
     public:
@@ -11,31 +12,28 @@ class Solution
     int maxMeetings(int start[], int end[], int n)
     {
         // Your code here
-         
-      
-        
-        vector<pair<int,int>>v;
-        int i;
-        for(i=0;i<n;i++)
-        {
-            v.push_back({end[i],start[i]});
-        }
-        sort(v.begin(),v.end());
-        int count = 1;
-        int j = 0;
-        for(i=1;i<n;i++)
-        {
-            
-            if(v[j].first < v[i].second)
-            {
-                j = i;
-                count++;
-            }
-        }
-        return count;
-        
+         vector<pair<int,int>>v;
+         int i;
+         for(i=0;i<n;i++)
+         {
+             v.push_back({end[i],start[i]});
+         }
+             sort(v.begin(),v.end());
+             int limit = v[0].first;
+             int count = 0;
+             for(int i=1;i<n;i++)
+             {
+                 if(limit < v[i].second)
+                 {
+                     count++;
+                     limit = v[i].first;
+                 }
+             }
+          
+         return count+1;
     }
 };
+
 
 //{ Driver Code Starts.
 int main() {
