@@ -15,8 +15,7 @@ class Solution
     // Function to check if Kth bit is set or not.
     bool checkKthBit(int n, int k)
     {
-        // Your code here
-        // It can be a one liner logic!! Think of it!!
+        
         int count = 0;
         while(n)
         {
@@ -34,9 +33,10 @@ class Solution
             count++;
             n = n >> 1;
         }
-        return ;
+        return false;
     }
 };
+
 
 //{ Driver Code Starts.
 
