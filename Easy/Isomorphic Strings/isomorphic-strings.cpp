@@ -15,9 +15,8 @@ class Solution
     //Function to check if two strings are isomorphic.
     bool areIsomorphic(string str1, string str2)
     {
-        
         // Your code here
-        int n = str1.size();
+         int n = str1.size();
         int m = str2.size();
         if(n != m)
         {
@@ -41,6 +40,7 @@ class Solution
             }
         }
         return true;
+        
     }
 };
 
