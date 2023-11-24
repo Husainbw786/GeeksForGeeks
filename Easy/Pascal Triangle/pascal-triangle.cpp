@@ -1,35 +1,25 @@
 //{ Driver Code Starts
 #include <bits/stdc++.h>
-
 using namespace std;
-#define ll long long
 
 // } Driver Code Ends
 // #define ll long long
 
 class Solution{
 public:
-    vector<ll> nthRowOfPascalTriangle(int n) {
+    vector<long long> nthRowOfPascalTriangle(int n) {
         // code here
-        vector<vector<long long >>v;
-        int i;
-         ll mod = 1e9+7;
-        for(i=0;i<n;i++)
-        {
-            vector<long long>temp(i+1,1);
-            v.push_back(temp);
-        }
-        for(i=2;i<n;i++)
-        {
-            vector<long long>prev = v[i-1];
-            vector<long long>curr = v[i];
-            for(int j=1;j<curr.size()-1;j++)
-            {
-                curr[j] = (prev[j-1] + prev[j]) % mod;
-            }
-            v[i] = curr;
-        }
-        return v[n-1];
+         vector<vector<long long>>ans;
+         for(int i=0;i<n;i++){
+             vector<long long>temp(i+1,1);
+             if(i>=2){
+            for(int j=1;j<temp.size()-1;j++){
+                temp[j]=(ans[i-1][j]+ans[i-1][j-1])%1000000007;
+                }
+             }
+            ans.push_back(temp);
+         }
+         return ans[n-1];
     }
 };
 
@@ -37,7 +27,7 @@ public:
 //{ Driver Code Starts.
 
 
-void printAns(vector<ll> &ans) {
+void printAns(vector<long long> &ans) {
     for (auto &x : ans) {
         cout << x << " ";
     }
