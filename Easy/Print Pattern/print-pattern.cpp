@@ -7,37 +7,44 @@ using namespace std;
 // } Driver Code Ends
 // User function Template for C++
 
-class Solution{
+class Solution
+{
 public:
 
-    void pos(int N, vector<int>&ans)
-    {
-        if(N <= 0)
-        {
-            return;
+   int decr(vector<int>&ans,int N){
+        
+        if(N<=0){
+          
+            return N;
         }
-        ans.push_back(N);
-        pos(N-5,ans);
+        ans.push_back(N-5);
+       return decr(ans,N-5);
     }
-    void neg(int N, vector<int>&ans, int org)
-    {
-        if(N == org)
-        {
-            ans.push_back(N);
-            return;
+     void incr(vector<int>&ans,int lv,int N){
+        if(lv==N){
+            return ;
         }
-        ans.push_back(N);
-        neg(N+5,ans,org);
+        ans.push_back(lv+5);
+        incr(ans,lv+5,N);
     }
     
     vector<int> pattern(int N){
         // code here
         vector<int>ans;
-        pos(N,ans);
-        neg(ans[ans.size()-1]-5,ans,N);
+        if(N<=0){
+            ans.push_back(N);
+            return ans;
+        }
+        ans.push_back(N);
+        int lv=decr(ans,N);
+        incr(ans,lv,N);
         return ans;
+        
+        
+
     }
 };
+
 
 //{ Driver Code Starts.
 
