@@ -6,6 +6,7 @@ using namespace std;
 
 // } Driver Code Ends
 //User function template for C++
+
 class Solution{
 public:
 	// #define ll long long
@@ -32,6 +33,7 @@ public:
 	    
 	}
 };
+
 
 //{ Driver Code Starts.
 
