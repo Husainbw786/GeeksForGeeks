@@ -10,6 +10,7 @@ void Solve (int i, int target, vector<int>& arr, vector<vector<int>>& ans, vecto
             if(target == 0)
             {
                 ans.push_back(temp);
+
             }
             return;
         }
