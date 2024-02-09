@@ -12,7 +12,14 @@ class Solution{
     void clonestack(stack<int> st, stack<int>& cloned)
     {
         //code here
-        cloned = st;
+        if(st.empty())
+        {
+            return;
+        }
+        int x = st.top();
+        st.pop();
+        clonestack(st,cloned);
+        cloned.push(x);
     }
 };
 
