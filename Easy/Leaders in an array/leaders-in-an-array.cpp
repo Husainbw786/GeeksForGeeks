@@ -14,10 +14,9 @@ class Solution{
     vector<int> leaders(int a[], int n){
         // Code here
         vector<int>v;
-        int i;
         int maxi = a[n-1];
-        v.push_back(maxi);
-        for(i=n-2;i>=0;i--)
+        v.push_back(a[n-1]);
+        for(int i=n-2;i>=0;i--)
         {
             if(maxi <= a[i])
             {
@@ -27,10 +26,8 @@ class Solution{
         }
         reverse(v.begin(),v.end());
         return v;
-        
     }
 };
-
 
 //{ Driver Code Starts.
 
