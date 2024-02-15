@@ -10,7 +10,7 @@ using namespace std;
 
 class Solution{
 public:
-    stack<int> insertAtBottom(stack<int> st,int X){
+    stack<int> insertAtBottom(stack<int> st,int x){
         
         stack<int>s;
         while(!st.empty())
@@ -18,7 +18,7 @@ public:
             s.push(st.top());
             st.pop();
         }
-        s.push(X);
+        st.push(x);
         while(!s.empty())
         {
             st.push(s.top());
