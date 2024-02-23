@@ -5,35 +5,42 @@ using namespace std;
 
 
 // } Driver Code Ends
-//User function Template for C++
 
-
-int solve(int idx, int buy, int cap, vector<int>&prices,vector<vector<vector<int>>>&dp)
-    {
-        if(idx == prices.size() || cap == 0)
-        {
+class Solution
+{
+    public:
+        //User function Template for C++
+        
+       int maxProfit(vector<int>&prices){
+        int n = prices.size();
+        vector<int>left(n,0),right(n,0);
+        if(n==1) {
             return 0;
         }
-        if(dp[idx][buy][cap] != -1)
-        {
-            return dp[idx][buy][cap];
+        int maxi = prices[n-1], diff = INT_MIN;
+        for(int i=n-2; i>=0; i--) {
+            diff = max(diff,maxi-prices[i]);
+            right[i] = diff;
+            maxi = max(prices[i],maxi);
         }
-        if(buy)
-        {
-            return dp[idx][buy][cap] =  max(-prices[idx] + solve(idx+1,0,cap,prices,dp),solve(idx+1,1,cap,prices,dp));
+        int mini = prices[0];
+        diff = INT_MIN;
+        for(int i=1; i<n; i++) {
+            diff = max(diff,prices[i]-mini);
+            left[i] = diff;
+            mini = min(prices[i],mini);
+        }   
+        int ans = INT_MIN;
+        for(int i=0; i<n-1; i++) {
+            ans = max(ans,left[i]+right[i+1]);
         }
-        else
-        { 
-            return dp[idx][buy][cap] = max(prices[idx] + solve(idx+1,1,cap-1,prices,dp),solve(idx+1,0,cap,prices,dp));
+        ans = max(right[0],ans);
+        if(ans<=0) {
+            return 0;
         }
+        return ans;
     }
-    
-int maxProfit(vector<int>&price){
-    //Write your code here..
-    int n = price.size();
-    vector<vector<vector<int>>>dp(n,vector<vector<int>>(2,vector<int>(3,-1)));
-    return solve(0,1,2,price,dp);
-}
+};
 
 //{ Driver Code Starts.
 
@@ -46,7 +53,8 @@ int main(){
         cin>>n;
         vector<int> price(n);
         for(int i=0;i<n;i++) cin>>price[i];
-        cout<<maxProfit(price)<<endl;
+        Solution obj;
+        cout<<obj.maxProfit(price)<<endl;
     }
 
 }
