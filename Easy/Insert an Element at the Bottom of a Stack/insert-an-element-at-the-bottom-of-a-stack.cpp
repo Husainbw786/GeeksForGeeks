@@ -10,7 +10,7 @@ using namespace std;
 
 class Solution{
 public:
-    stack<int> insertAtBottom(stack<int> st,int x){
+    stack<int> insertAtBottom(stack<int> st,int X){
         
         stack<int>s;
         while(!st.empty())
@@ -18,7 +18,7 @@ public:
             s.push(st.top());
             st.pop();
         }
-        st.push(x);
+        s.push(X);
         while(!s.empty())
         {
             st.push(s.top());
@@ -27,6 +27,7 @@ public:
         return st;
     }
 };
+
 
 //{ Driver Code Starts.
 
