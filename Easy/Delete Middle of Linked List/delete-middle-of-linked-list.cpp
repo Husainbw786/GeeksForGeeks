@@ -1,7 +1,6 @@
 //{ Driver Code Starts
 #include <bits/stdc++.h> 
 using namespace std; 
-
 struct Node
 {
     int data;
@@ -13,8 +12,56 @@ struct Node
     }
 };
 
-/* Function to get the middle of the linked list*/
-struct Node *deleteMid(struct Node *head);
+
+
+// } Driver Code Ends
+/* Link list Node:
+
+struct Node
+{
+    int data;
+    struct Node* next;
+
+    Node(int x){
+        data = x;
+        next = NULL;
+    }
+};
+
+*/
+
+// Deletes middle of linked list and returns head of the modified list
+class Solution{
+    public:
+    Node* deleteMid(Node* head)
+{
+    // Your Code Here
+    if(head == NULL || head->next == NULL)
+    {
+        return NULL;
+    }
+    
+    
+    Node* slow = head;
+    Node* fast = head;
+    Node* prev = NULL;
+    
+    while(fast && fast->next)
+    {
+        prev = slow;
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    prev->next = slow->next;
+    return head;
+    
+}
+};
+
+//{ Driver Code Starts.
+
+
+
 void printList(Node* node) 
 { 
 	while (node != NULL) { 
@@ -42,7 +89,8 @@ int main()
 			tail->next = new Node(data);
 			tail = tail->next;
 		}
-		head = deleteMid(head);
+		Solution obj;
+		head = obj.deleteMid(head);
 		printList(head); 
 	}
 	return 0; 
@@ -51,45 +99,3 @@ int main()
 
 
 // } Driver Code Ends
-
-
-
-
-/* Link list Node:
-
-struct Node
-{
-    int data;
-    struct Node* next;
-
-    Node(int x){
-        data = x;
-        next = NULL;
-    }
-};
-
-*/
-
-// Deletes middle of linked list and returns head of the modified list
-Node* deleteMid(Node* head)
-{
-    // Your Code Here
-    if(head == NULL || head->next == NULL)
-    {
-        return NULL;
-    }
-    
-    Node* slow = head;
-    Node* fast = head;
-    Node* prev = NULL;
-    
-    while(fast && fast->next)
-    {
-        prev = slow;
-        slow = slow->next;
-        fast = fast->next->next;
-    }
-    prev->next = slow->next;
-    return head;
-    
-}
