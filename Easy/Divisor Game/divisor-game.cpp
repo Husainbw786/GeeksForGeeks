@@ -5,10 +5,10 @@ using namespace std;
 
 // } Driver Code Ends
 class Solution {
-public:
+  public:
     bool divisorGame(int N) {
         // code here
-        if(N % 2 == 0)
+         if(N % 2 == 0)
         {
             return true;
         }
@@ -22,13 +22,15 @@ int main() {
     int t;
     cin >> t;
     while (t--) {
-        int N; 
-        cin >> N;
-        
+        int n;
+        cin >> n;
+
         Solution obj;
-        bool ans = obj.divisorGame(N);
-        if(ans) cout<<"True"<<endl;
-        else cout<<"False"<<endl;
+        bool ans = obj.divisorGame(n);
+        if (ans)
+            cout << "True" << endl;
+        else
+            cout << "False" << endl;
     }
     return 0;
 }
